@@ -1,5 +1,8 @@
 const canvas = document.getElementById("canvas1");
 const ctx = canvas.getContext("2d");
+const pauseBtn = document.getElementById("pauseBtn");
+
+let isGameStoped = false;
 
 canvas.width = 1000;
 canvas.height = 400;
@@ -49,9 +52,27 @@ function animate() {
     ctx.translate(-bird.x + canvas.width / 5, 0);
     bird.draw(ctx, canvas);
     gamemap.draw(ctx, canvas);
-    bird.update();
+
+    if(!isGameStoped) {
+        bird.update();
+    }
     ctx.restore();
 
     requestAnimationFrame(animate);
 }
+
+pauseBtn.addEventListener("click",()=>{
+    isGameStoped ? isGameStoped = false : isGameStoped = true;
+    console.log(isGameStoped)
+    if(isGameStoped) {
+        pauseBtn.textContent = "STOPED";
+        pauseBtn.style.background = "red";
+    }
+    else
+    {
+        pauseBtn.textContent = "PAUSE";
+        pauseBtn.style.background = "lightgreen";
+    }
+})
+
 animate();

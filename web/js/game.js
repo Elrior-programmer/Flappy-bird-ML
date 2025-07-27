@@ -97,6 +97,7 @@ resetBtn.addEventListener("click",() => {
         birdStartSetting.birdRadius,
         birdStartSetting.birdSpeed
     );
+    pauseBtn.disabled = false; // when bird died and we reset pausebtn is going back
 })
 
 animate();

@@ -12,6 +12,9 @@ class Bird {
         this.speedLimit = 5;
 
         this.isAlive = true; // sprawdzamy cz ptak jest zywy
+        this.sensors = [
+            new Sensor(this.x,this.y,300,0)
+        ]
     }
 
     resetSpeed() {
@@ -33,6 +36,7 @@ class Bird {
             else {
                 this.y += this.speed;
             }
+            this.sensors[0].update(this.x,this.y);
         }
     }
 
@@ -46,6 +50,7 @@ class Bird {
         }
         ctx.beginPath();
        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+       this.sensors[0].draw(ctx,canvas);
         ctx.fill();
     }
 

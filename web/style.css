@@ -19,3 +19,20 @@ h1 {
     border: 2px solid black;
     margin: 40px auto;
 }
+
+#btnWrapper {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+#btnWrapper button {
+    border: 0;
+    padding: 20px 10px;
+    background-color: lightgreen;
+    color: whitesmoke;
+    width: 100px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    text-shadow: 0px 0px 6px rgba(24, 24, 27, 1);
+}

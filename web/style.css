@@ -37,3 +37,8 @@ h1 {
     text-shadow: 0px 0px 6px rgba(24, 24, 27, 1);
 }
 
+#btnWrapper button:disabled {
+    background-color: aliceblue;
+    color: black;
+    cursor: not-allowed;
+}

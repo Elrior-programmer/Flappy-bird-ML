@@ -70,13 +70,15 @@ function animate() {
         bird.update();
     }
     ctx.restore();
-
+    if(!bird.isAlive)
+    {
+        pauseBtn.disabled = true;
+    }
     requestAnimationFrame(animate);
 }
 
 pauseBtn.addEventListener("click",()=>{
     isGameStoped ? isGameStoped = false : isGameStoped = true;
-    console.log(isGameStoped)
     if(isGameStoped) {
         pauseBtn.textContent = "STOPED";
         pauseBtn.style.background = "red";

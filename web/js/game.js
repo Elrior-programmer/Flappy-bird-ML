@@ -1,15 +1,28 @@
 const canvas = document.getElementById("canvas1");
 const ctx = canvas.getContext("2d");
 const pauseBtn = document.getElementById("pauseBtn");
+const resetBtn = document.getElementById("resetBtn");
 
 let isGameStoped = false;
 
 canvas.width = 1000;
 canvas.height = 400;
 
+const birdStartSetting = {
+    birdStartX:canvas.width/4,
+    birdStartY:canvas.height/2,
+    birdRadius:canvas.height/12,
+    birdSpeed:3
+};
+
 let gamemap = new gameMap(2000,1,canvas.height);
 
-let bird = new Bird(canvas.width/4,canvas.height/2,canvas.height/12,3);
+let bird = new Bird(
+    birdStartSetting.birdStartX,
+    birdStartSetting.birdStartY,
+    birdStartSetting.birdRadius,
+    birdStartSetting.birdSpeed
+);
 
 function canvasClear(ctx) {
     ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -73,6 +86,15 @@ pauseBtn.addEventListener("click",()=>{
         pauseBtn.textContent = "PAUSE";
         pauseBtn.style.background = "lightgreen";
     }
+})
+
+resetBtn.addEventListener("click",() => {
+    bird = new Bird(
+        birdStartSetting.birdStartX,
+        birdStartSetting.birdStartY,
+        birdStartSetting.birdRadius,
+        birdStartSetting.birdSpeed
+    );
 })
 
 animate();

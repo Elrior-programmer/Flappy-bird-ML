@@ -51,7 +51,7 @@ class Bird {
 
     addEventListeners() {
         document.onkeydown = (e) => {
-            if (e.key === " " || e.code === "Space") {
+            if (e.key === "w") {
                 this.flyUp = true;
             }
         }

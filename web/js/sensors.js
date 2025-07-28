@@ -14,7 +14,8 @@ class Sensor {
     draw(ctx,canvas) {
         ctx.strokeStyle = 'black';
         ctx.moveTo(this.x,this.y);
-        ctx.lineTo(this.x+this.width,this.y);
+        ctx.lineTo(
+            this.x + Math.sin(this.angle)*this.width,this.y + Math.cos(this.angle)*this.width);
         ctx.stroke();
     }
 }

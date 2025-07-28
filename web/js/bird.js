@@ -12,9 +12,8 @@ class Bird {
         this.speedLimit = 5;
 
         this.isAlive = true; // sprawdzamy cz ptak jest zywy
-        this.sensors = [
-            new Sensor(this.x,this.y,300,0)
-        ]
+        this.sensors = [];
+        createSensors(this.sensors,16,Math.PI/8,200,this.x,this.y);
     }
 
     resetSpeed() {
@@ -36,7 +35,9 @@ class Bird {
             else {
                 this.y += this.speed;
             }
-            this.sensors[0].update(this.x,this.y);
+            this.sensors.forEach((sensor) => {
+                sensor.update(this.x,this.y);
+            });
         }
     }
 
@@ -50,7 +51,9 @@ class Bird {
         }
         ctx.beginPath();
        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-       this.sensors[0].draw(ctx,canvas);
+       this.sensors.forEach( (sensor) => {
+        sensor.draw(ctx,canvas);
+       })
         ctx.fill();
     }
 
@@ -65,5 +68,16 @@ class Bird {
             this.flyUp = false;
             this.resetSpeed();
         }
+    }
+}
+
+function createSensors(array,amount,angleBetween,width,x,y) {
+    angle = 0;
+    for(let i = 0 ; i < amount ; i++)
+    {
+        nextSensor = new Sensor(x,y,width,angle)
+        array.push(nextSensor);
+        angle += angleBetween;
+
     }
 }

@@ -20,7 +20,7 @@ class Bird {
         this.speed = this.speedReturn;
     }
 
-    update() {
+    update(borders) {
         if(this.isAlive)
         {
             this.x +=1;
@@ -36,7 +36,7 @@ class Bird {
                 this.y += this.speed;
             }
             this.sensors.forEach((sensor) => {
-                sensor.update(this.x,this.y);
+                sensor.update(this.x,this.y,borders);
             });
         }
     }
@@ -51,10 +51,10 @@ class Bird {
         }
         ctx.beginPath();
        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+       ctx.fill();
        this.sensors.forEach( (sensor) => {
         sensor.draw(ctx,canvas);
        })
-        ctx.fill();
     }
 
     addEventListeners() {

@@ -63,11 +63,19 @@ function animate() {
 
     ctx.save();
     ctx.translate(-bird.x + canvas.width / 5, 0);
-    bird.draw(ctx, canvas);
     gamemap.draw(ctx, canvas);
+    bird.draw(ctx, canvas);
 
+    let Allborders = gamemap.borders;
+    gamemap.columns.forEach( (column) => {
+        column.borders.forEach( (border) => {
+            Allborders.push(border);
+        })
+    })
+
+    
     if(!isGameStoped) {
-        bird.update();
+        bird.update(Allborders);
     }
     ctx.restore();
     if(!bird.isAlive)
@@ -101,3 +109,9 @@ resetBtn.addEventListener("click",() => {
 })
 
 animate();
+
+if(!bird.isAlive)
+    {
+        pauseBtn.disabled = true;
+    }
+

@@ -34,22 +34,11 @@ class Column {
             }
         ]
     }
-
-     
-
+    
     draw(ctx,canvas) {
         let saveFillStyle = ctx.fillStyle;
         ctx.fillStyle = "green";
         ctx.fillRect(this.x,this.y,this.width,this.height);
-
-    ctx.strokeStyle = "red";
-    for (let border of this.borders) {
-        ctx.beginPath();
-        ctx.moveTo(border.startX, border.startY);
-        ctx.lineTo(border.endX, border.endY);
-        ctx.stroke();
-    }
-
         ctx.fillStyle = saveFillStyle;
     }
 }

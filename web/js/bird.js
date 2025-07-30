@@ -42,6 +42,9 @@ class Bird {
     }
 
     draw(ctx,canvas) {
+        this.sensors.forEach( (sensor) => {
+        sensor.draw(ctx,canvas);
+       })
         if(this.isAlive)
         {
             ctx.fillStyle = "black";
@@ -52,9 +55,7 @@ class Bird {
         ctx.beginPath();
        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
        ctx.fill();
-       this.sensors.forEach( (sensor) => {
-        sensor.draw(ctx,canvas);
-       })
+       
     }
 
     addEventListeners() {

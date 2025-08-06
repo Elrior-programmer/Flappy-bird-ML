@@ -2,6 +2,9 @@ const canvas = document.getElementById("canvas1");
 const ctx = canvas.getContext("2d");
 const pauseBtn = document.getElementById("pauseBtn");
 const resetBtn = document.getElementById("resetBtn");
+const optionsBtn = document.getElementById("optionsBtn");
+const optionsOverlay = document.getElementById("optionsOverlay");
+const closeBtn = document.getElementById("closeBtn");
 
 let isGameStoped = false;
 
@@ -76,13 +79,13 @@ function animate() {
     
     if(!isGameStoped) {
         bird.update(Allborders);
+        requestAnimationFrame(animate);
     }
     ctx.restore();
     if(!bird.isAlive)
     {
         pauseBtn.disabled = true;
     }
-    requestAnimationFrame(animate);
 }
 
 pauseBtn.addEventListener("click",()=>{
@@ -95,6 +98,7 @@ pauseBtn.addEventListener("click",()=>{
     {
         pauseBtn.textContent = "PAUSE";
         pauseBtn.style.background = "lightgreen";
+        requestAnimationFrame(animate);
     }
 })
 
@@ -106,6 +110,22 @@ resetBtn.addEventListener("click",() => {
         birdStartSetting.birdSpeed
     );
     pauseBtn.disabled = false; // when bird died and we reset pausebtn is going back
+    if(isGameStoped) {
+        pauseBtn.textContent = "PAUSE";
+        pauseBtn.style.background = "lightgreen";
+        isGameStoped = false;
+        requestAnimationFrame(animate);
+    }
+})
+
+optionsBtn.addEventListener("click", () => {
+    if(!isGameStoped)
+        pauseBtn.click();
+    optionsOverlay.style.visibility = "visible";
+})
+
+closeBtn.addEventListener("click", () => {
+    optionsOverlay.style.visibility = "hidden";
 })
 
 animate();

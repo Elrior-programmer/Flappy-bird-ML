@@ -1,4 +1,5 @@
 body {
+    position: relative;
     background-color: lightblue;
     color: whitesmoke;
 }
@@ -26,7 +27,28 @@ h1 {
     width: fit-content;
 }
 
-#btnWrapper button {
+
+
+#btnWrapper button:disabled {
+    background-color: aliceblue;
+    color: black;
+    cursor: not-allowed;
+}
+
+#optionsOverlay {
+    background-color: #AAF0D1;
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 2px solid black;
+
+    width: 80vw;
+    height: 80vh;
+}
+
+.button {
     border: 0;
     padding: 20px 10px;
     background-color: lightgreen;
@@ -37,8 +59,12 @@ h1 {
     text-shadow: 0px 0px 6px rgba(24, 24, 27, 1);
 }
 
-#btnWrapper button:disabled {
-    background-color: aliceblue;
-    color: black;
-    cursor: not-allowed;
+#closeBtn {
+    margin: 20px;
+    background-color: red;
+}
+
+#overlay-btnWrapper h1 {
+    margin: 10px;
+    color: white;
 }

@@ -8,8 +8,26 @@
         <h1>Flappy bird game</h1>
         <canvas id="canvas1"></canvas>
         <div id="btnWrapper">
-        <button id="pauseBtn" >PAUSE</button>
-        <button id="resetBtn">RESET</button>
+        <button id="pauseBtn" class="button" >PAUSE</button>
+        <button id="resetBtn" class="button">RESET</button>
+        <button id="optionsBtn" class="button">OPTIONS</button>
+        <h1>Press W to Fly!</h1>
+        </div>
+        <div id="optionsOverlay">
+            <div id="overlay-btnWrapper">
+                <button id="closeBtn" class="button">CLOSE</button>
+                <button id="saveMapBtn" class="button">SAVE MAP</button>
+                <button id="saveBirdBtn" class="button">SAVE BIRD</button>
+                <button id="saveAllBtn" class="button">SAVE ALL</button>
+                <div id="informationWrapper">
+                    <h1>Information</h1>
+                    <h3>Birds: 1
+
+                    </h2>
+                    <h2></h2>
+                </div>
+                    
+            </div>
         </div>
         <script src="js/sensors.js"></script>
         <script src="js/column.js"></script>
